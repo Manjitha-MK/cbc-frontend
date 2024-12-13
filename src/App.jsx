@@ -1,5 +1,5 @@
 import './App.css'
-import Testing from './components/testing'
+import LoginPage from './pages/loginPage'
 
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <Testing/>
+      <LoginPage/>
     </>
   )
 }
