@@ -1,5 +1,5 @@
 import './App.css'
-import Productcard from './components/productCard'
+import Testing from './components/testing'
 
 
 function App() {
@@ -7,9 +7,7 @@ function App() {
 
   return (
     <>
-     <Productcard name="Laptop" price="$999.99" discount="10%"/>
-     <Productcard name="iPhone 16" price="$499.99" discount="10%"/>
-     <Productcard name="Samsung Galaxy S22" price="$499.99" discount="5%"/>
+      <Testing/>
     </>
   )
 }
