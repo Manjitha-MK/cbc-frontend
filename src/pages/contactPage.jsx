@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import Footerpage from "./footerPage";
+// import Footerpage from "./footerPage";
 
 const Contact = () => {
   return (
@@ -104,7 +104,7 @@ const Contact = () => {
       </div>
 
       {/* Footer Section */}
-      <Footerpage />
+      
     </div>
   );
 };

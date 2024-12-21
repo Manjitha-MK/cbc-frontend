@@ -5,6 +5,7 @@ import LoginPage from "./pages/loginPage";
 import SignUpPage from "./pages/signUpPage";
 import AdminHomePage from "./pages/adminHomePage";
 import Contact from "./pages/contactPage";
+import Footerpage from "./pages/footerPage";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/admin/*" element={<AdminHomePage />}></Route>
 
           <Route path="/home/contact" element={<Contact/>}></Route>
+          <Footerpage/>
         </Routes>
       </BrowserRouter>
     </>
