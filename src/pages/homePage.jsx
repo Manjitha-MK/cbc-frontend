@@ -1,5 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
+import { Link } from 'react-router-dom';
+// import Contact from './contactPage';
 
 const HomePage = () => {
   return (
@@ -15,9 +17,9 @@ const HomePage = () => {
             <a href="#about" className="hover:text-blue-400">
               About
             </a>
-            <a href="#contact" className="hover:text-blue-400">
+            <Link to="/contact" className="hover:text-blue-400">
               Contact
-            </a>
+            </Link>
           </nav>
         </div>
       </header>
