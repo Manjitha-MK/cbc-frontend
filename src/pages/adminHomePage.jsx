@@ -5,7 +5,7 @@ import Products from "../Admin/products";
 export default function AdminHomePage() {
   return (
     <div className="flex">
-      <div className="w-[20%] h-screen items-center flex flex-col bg-blue-400">
+      <div className="w-[20%] h-screen items-center justify-center flex flex-col bg-blue-400">
         <Link to="/admin/dashboard" >Dashboard</Link>
         <Link to="/admin/orders">Orders</Link>
         <Link to="/admin/products">Products</Link>
