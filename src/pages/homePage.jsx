@@ -1,11 +1,12 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
-import Footerpage from "./footerPage";
-// import Contact from './contactPage';
+
+
 
 const HomePage = () => {
   return (
     <div className="min-h-screen text-white bg-gray-900">
+
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center px-4 py-20 text-center">
@@ -47,7 +48,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <Footerpage className="fixed" />
+    
     </div>
   );
 };

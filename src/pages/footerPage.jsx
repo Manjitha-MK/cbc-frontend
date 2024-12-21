@@ -4,7 +4,7 @@ import React from "react";
 export default function Footerpage(){
     return (
         <div>
-          <footer className="py-6 bg-gray-800">
+          <footer className="py-6 bg-white">
             <div className="container mx-auto text-center">
               <p className="text-gray-500">
                 &copy; 2024 My Website. All Rights Reserved.

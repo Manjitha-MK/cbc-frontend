@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-// import Footerpage from "./footerPage";
+import { FaFacebook,FaInstagramSquare } from "react-icons/fa";
+import { FaTwitter, FaX, FaYoutube } from "react-icons/fa6";
 
 const Contact = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen lg:mt-10 sm:mt-16 bg-rose-50 ">
       {/* Contact Content */}
-      <div className="flex-grow">
+      <div className="flex-grow ">
         <div className="flex flex-col items-start justify-between p-8 space-x-32 lg:flex-row lg:p-16">
           {/* Form Section */}
           <div className="w-full mb-8 lg:w-2/3 lg:mb-0">
@@ -50,7 +51,7 @@ const Contact = () => {
           </div>
 
           {/* Info Section */}
-          <div className="w-full lg:w-1/3">
+          <div className="w-full lg:w-1/3 ">
             <div className="mb-8">
               <h2 className="mb-4 text-lg font-bold">OUR ADDRESS</h2>
               <p className="text-sm text-gray-700">
@@ -63,21 +64,18 @@ const Contact = () => {
 
             <div className="mb-8">
               <h2 className="mb-4 text-lg font-bold">OUR SOCIAL</h2>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-600 hover:text-black">
-                  <i className="fab fa-facebook-f"></i>
+              <div className="flex space-x-4 text-2xl">
+                <a href="#" className="text-blue-500 hover:text-blue-700">
+                  <i className="fab fa-facebook-f"><FaFacebook /></i>
                 </a>
                 <a href="#" className="text-gray-600 hover:text-black">
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-instagram"><FaInstagramSquare /></i>
                 </a>
-                <a href="#" className="text-gray-600 hover:text-black">
-                  <i className="fab fa-youtube"></i>
+                <a href="#" className="text-red-500 hover:text-red-600">
+                  <i className="fab fa-youtube"><FaYoutube/></i>
                 </a>
-                <a href="#" className="text-gray-600 hover:text-black">
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a href="#" className="text-gray-600 hover:text-black">
-                  <i className="fab fa-tiktok"></i>
+                <a href="#" className="text-gray-800 hover:text-black">
+                  <i className="fab fa-twitter"><FaX/></i>
                 </a>
               </div>
             </div>
