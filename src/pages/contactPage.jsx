@@ -44,7 +44,57 @@ const Contact = () => {
           </button>
         </form>
       </div>
+ {/* Info Section */}
+ <div className="w-full lg:w-1/3">
+        <div className="mb-8">
+          <h2 className="mb-4 text-lg font-bold">OUR ADDRESS</h2>
+          <p className="text-sm text-gray-700">
+            Not Your Mother’s Haircare
+            <br /> c/o DeMert Brands
+            <br /> P.O. Box 82586
+            <br /> Tampa, FL 33682
+          </p>
+        </div>
 
+        <div className="mb-8 ">
+          <h2 className="mb-4 text-lg font-bold">OUR SOCIAL</h2>
+          <div className="flex space-x-4">
+            <a href="#" className="text-gray-600 hover:text-black">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" className="text-gray-600 hover:text-black">
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a href="#" className="text-gray-600 hover:text-black">
+              <i className="fab fa-youtube"></i>
+            </a>
+            <a href="#" className="text-gray-600 hover:text-black">
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a href="#" className="text-gray-600 hover:text-black">
+              <i className="fab fa-tiktok"></i>
+            </a>
+          </div>
+        </div>
+
+        <div className="">
+          <h2 className="mb-4 text-lg font-bold">EMAIL US</h2>
+          <p className="text-sm text-gray-700">
+            For Product Questions/Concerns, Brand Information & General Inquiries:
+            <br />
+            <a href="mailto:hello@nymbrands.com" className="text-black underline">
+              hello@nymbrands.com
+            </a>
+          </p>
+          <p className="mt-4 text-sm text-gray-700">
+            Visit our corporate website: DeMert Brands:
+            <br />
+            <a href="https://www.demertbrands.com" target="_blank" rel="noopener noreferrer" className="text-black underline">
+              www.demertbrands.com
+            </a>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
