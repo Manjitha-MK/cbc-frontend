@@ -1,29 +1,11 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
-import { Link } from "react-router-dom";
 import Footerpage from "./footerPage";
 // import Contact from './contactPage';
 
 const HomePage = () => {
   return (
     <div className="min-h-screen text-white bg-gray-900">
-      {/* Header Section */}
-      <header className="py-4 bg-gray-800 shadow-lg">
-        <div className="container flex items-center justify-between mx-auto">
-          <h1 className="text-3xl font-bold">My Website</h1>
-          <nav className="space-x-6">
-            <a href="#features" className="hover:text-blue-400">
-              Features
-            </a>
-            <a href="#about" className="hover:text-blue-400">
-              About
-            </a>
-            <Link to="/home/contact" className="hover:text-blue-400">
-              Contact
-            </Link>
-          </nav>
-        </div>
-      </header>
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center px-4 py-20 text-center">
