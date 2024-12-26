@@ -1,7 +1,9 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useState } from 'react';
 
 const LoginPage = () => {
+  const [email,setEmail] = useState("your email");
+  const [password,setPassword] = useState();
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-900">
       <div className="w-full max-w-md p-8 bg-gray-800 rounded-lg shadow-lg">
