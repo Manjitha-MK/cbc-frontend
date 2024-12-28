@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 
 export default function AddProductForm() {
@@ -24,7 +25,6 @@ export default function AddProductForm() {
             stock : stock,
             description : description
         }
-
     }
 
 
