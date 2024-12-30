@@ -18,7 +18,7 @@ const LoginPage = () => {
           return;
         }
         toast.success("Login success");
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data.token); //13 vdo
         if (res.data.user.type == "admin") {
           window.location.href = "/admin";
         } else {
