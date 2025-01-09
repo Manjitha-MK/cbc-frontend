@@ -13,9 +13,11 @@ export default function EditProductForm() {
     navigate("/admin/products");
   }
 
+  const altNames = product.altNames.join(",")
+
   const [productId, setProductId] = useState(product.productId);
   const [productName, setProductName] = useState(product.productName);
-  const [alternativeNames, setAlternativeNames] = useState("");
+  const [alternativeNames, setAlternativeNames] = useState(altNames);
   const [imageFiles, setImageFiles] = useState([]);
   const [price, setPrice] = useState(product.price);
   const [lastPrice, setLastPrice] = useState(product.lastPrice);
