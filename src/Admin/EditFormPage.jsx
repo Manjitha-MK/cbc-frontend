@@ -1,32 +1,37 @@
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import uploadMediaToSupabase from "../Utils/mediaUpload";
 
 export default function EditProductForm() {
-  const [productId, setProductId] = useState("");
-  const [productName, setProductName] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const product = location.state.product;
+  if (product == null) {
+    navigate("/admin/products");
+  }
+
+  const [productId, setProductId] = useState(product.productId);
+  const [productName, setProductName] = useState(product.productName);
   const [alternativeNames, setAlternativeNames] = useState("");
   const [imageFiles, setImageFiles] = useState([]);
-  const [price, setPrice] = useState("");
-  const [lastPrice, setLastPrice] = useState("");
-  const [stock, setStock] = useState("");
-  const [description, setDescription] = useState("");
-  const navigate = useNavigate();
+  const [price, setPrice] = useState(product.price);
+  const [lastPrice, setLastPrice] = useState(product.lastPrice);
+  const [stock, setStock] = useState(product.stock);
+  const [description, setDescription] = useState(product.description);
 
   async function handleSubmit() {
     const altNames = alternativeNames.split(",");
-    
-    const promisesArray = []
 
-    for(let i=0; i<imageFiles.length; i++){
-      promisesArray[i] = uploadMediaToSupabase(imageFiles[i])
+    const promisesArray = [];
+
+    for (let i = 0; i < imageFiles.length; i++) {
+      promisesArray[i] = uploadMediaToSupabase(imageFiles[i]);
     }
-    
+
     const imgUrls = await Promise.all(promisesArray);
-
-
 
     const product = {
       productId: productId,
@@ -41,19 +46,22 @@ export default function EditProductForm() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = axios.post("http://localhost:5000/api/products", product, {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      });
-      
+      const response = axios.post(
+        "http://localhost:5000/api/products",
+        product,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+
       // Check if the response indicates success
       if (response.status === 201 || response.status === 200) {
         toast.success("Product added successfully");
       } else {
         toast.error("Failed to add product");
       }
-      
     } catch (err) {
       // Handle the error and display a meaningful message
       if (err.response && err.response.data && err.response.data.message) {
@@ -63,14 +71,14 @@ export default function EditProductForm() {
       }
       console.error(err);
     }
-    navigate("/admin/products")
+    navigate("/admin/products");
   }
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 to-gray-100">
       <div className="w-full max-w-3xl p-10 bg-white shadow-xl rounded-2xl">
         <h1 className="mb-6 text-4xl font-bold text-center text-blue-700">
-          Edit Product 
+          Edit Product
         </h1>
         <div className="space-y-8">
           {/* Row 1: Product ID and Name */}
@@ -122,9 +130,8 @@ export default function EditProductForm() {
                 type="file"
                 placeholder="Enter Image URL"
                 className="w-full px-4 py-3 text-gray-700 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-
                 onChange={(e) => {
-                  setImageFiles(e.target.files)
+                  setImageFiles(e.target.files);
                 }}
                 multiple
               />

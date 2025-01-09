@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaEdit, FaPlus, FaTrash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 export default function Products() {
@@ -29,6 +29,8 @@ export default function Products() {
         });
     }
   }, [productsLoaded]);
+
+  const navigate = useNavigate();
 
   // const handleEdit = (productId) => {
   //     console.log("Edit product:", productId);
@@ -103,7 +105,9 @@ export default function Products() {
                   <td className="px-6 py-4 text-center border">
                     <button
                       className="px-2 py-1 mr-2 text-blue-500 rounded-lg focus:outline-none "
-                      // onClick={() => handleEdit(product._id)}
+                      onClick={() =>{
+                        navigate("/admin/products/editProducts", {state : {product : product}});
+                      }}
                     >
                       <FaEdit className="inline-block w-4 h-4 mr-1" />
                     </button>
