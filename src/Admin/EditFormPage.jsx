@@ -88,6 +88,7 @@ export default function EditProductForm() {
                 Product ID
               </label>
               <input
+                disabled
                 type="text"
                 placeholder="Enter Product ID"
                 className="w-full px-4 py-3 text-gray-700 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
