@@ -28,14 +28,15 @@ export default function EditProductForm() {
     const altNames = alternativeNames.split(",");
 
     const promisesArray = [];
+    let imgUrls = product.images
 
     for (let i = 0; i < imageFiles.length; i++) {
       promisesArray[i] = uploadMediaToSupabase(imageFiles[i]);
     }
 
-    const imgUrls = await Promise.all(promisesArray);
+    imgUrls  = await Promise.all(promisesArray);
 
-    const product = {
+    const productData = {
       productId: productId,
       productName: productName,
       altNames: altNames,
@@ -48,9 +49,9 @@ export default function EditProductForm() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = axios.post(
-        "http://localhost:5000/api/products",
-        product,
+      const response = await axios.put(
+        import.meta.env.VITE_BACKEND_URL+"/api/products/"+product.productId,
+        productData,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -60,9 +61,9 @@ export default function EditProductForm() {
 
       // Check if the response indicates success
       if (response.status === 201 || response.status === 200) {
-        toast.success("Product added successfully");
+        toast.success("Product updated successfully");
       } else {
-        toast.error("Failed to add product");
+        toast.error("Failed to update product");
       }
     } catch (err) {
       // Handle the error and display a meaningful message
@@ -201,7 +202,7 @@ export default function EditProductForm() {
               className="px-6 py-3 font-medium text-white transition duration-200 bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               onClick={handleSubmit}
             >
-              Add Product
+              Update Product
             </button>
           </div>
         </div>

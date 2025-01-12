@@ -3,6 +3,8 @@ import toast from "react-hot-toast";
 
 const key = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlubm5yamhxZGpjZWtzcHRiZHRmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU1Mzg3NTEsImV4cCI6MjA1MTExNDc1MX0.td8efULhAY2tarhjxySvGuyuHIhczEx5W9IubL1k4g4`;
 const url = "https://innnrjhqdjceksptbdtf.supabase.co";
+const supabase = createClient(url, key);
+
 
 export default function uploadMediaToSupabase(file) {
   return new Promise((resolve, reject) => {
@@ -14,7 +16,6 @@ export default function uploadMediaToSupabase(file) {
     let fileName = file.name;
     const extension = fileName.split(".")[fileName.split(".").length - 1];
 
-    const supabase = createClient(url, key);
 
     const timestamp = new Date().getTime(); // same images can save
     fileName = timestamp + file.name+ "." + extension;
