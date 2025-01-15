@@ -11,7 +11,7 @@ const HomePage = () => {
       <div className="w-full h-[calc(100vh-100px)] bg-red-800">
         <Routes>
           <Route path="/" element={<h1>Home Page</h1>} />
-          <Route path="/productInfo" element={<ProductOverview/>} />
+          <Route path="/productInfo/:id" element={<ProductOverview/>} />
 
         </Routes>
       </div>
