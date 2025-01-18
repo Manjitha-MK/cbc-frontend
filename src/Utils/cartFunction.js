@@ -29,5 +29,9 @@ export function loadCart() {
         cart[index].qty = newQty
       }
     }
-   
+    saveCart(cart)
+  }
+
+  export function saveCart(cart){
+    localStorage.setItem("cart",JSON.stringify(cart))
   }
