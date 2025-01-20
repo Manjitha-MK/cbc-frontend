@@ -43,3 +43,14 @@ export function saveCart(cart) {
 export function clearCart() {
   localStorage.removeItem("cart");
 }
+
+export function deleteItem(productId){
+  const cart = loadCart()
+  const index = cart.findIndex((item) => {
+    return item.productId == productId;
+  });
+
+  if(index!=-1){
+    cart.splice(index,1)
+  }
+}
