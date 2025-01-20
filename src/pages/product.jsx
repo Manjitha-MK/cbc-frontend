@@ -19,6 +19,7 @@ export default function ProductPage() {
         .catch((err) => {
           toast.error("Failed to fetch product");
           setLoadingStatatus("error");
+          console.log(err)
         });
     }
   }, [loadingStatus]);

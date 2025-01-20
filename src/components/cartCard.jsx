@@ -1,5 +1,4 @@
 import axios from "axios";
-import { comma } from "postcss/lib/list";
 import { useEffect, useState } from "react";
 
 export default function CartCard(props){
