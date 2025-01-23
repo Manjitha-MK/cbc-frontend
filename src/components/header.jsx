@@ -28,6 +28,10 @@ export default function Header() {
           {" "}
           Contact Us{" "}
         </Link>
+        <Link to="/cart" className="text-xl text-[#be843d] font-bold hover:border-b border-b-[#926228]">
+          {" "}
+          Cart{" "}
+        </Link>
       </div>
     </header>
   );
