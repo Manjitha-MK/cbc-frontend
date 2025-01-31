@@ -19,16 +19,18 @@ export default function ProductPage() {
         .catch((err) => {
           toast.error("Failed to fetch product");
           setLoadingStatatus("error");
-          console.log(err)
+          console.log(err);
         });
     }
   }, [loadingStatus]);
 
   return (
-    <div className="flex flex-wrap justify-center w-full h-full overflow-y-scroll">
-        {products.map((product) => 
-          <Productcard product={product}/>
-        )}
-    </div>
+    <>
+      <div className="flex flex-wrap justify-center w-full h-full overflow-y-scroll bg-red-500">
+        {products.map((product) => (
+          <Productcard product={product} />
+        ))}
+      </div>
+    </>
   );
 }

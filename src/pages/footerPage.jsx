@@ -7,7 +7,7 @@ export default function Footerpage(){
           <footer className="py-6 bg-white">
             <div className="container mx-auto text-center">
               <p className="text-gray-500">
-                &copy; 2024 My Website. All Rights Reserved.
+                &copy; 2025 cosmetic Website. All Rights Reserved.
               </p>
             </div>
           </footer>
