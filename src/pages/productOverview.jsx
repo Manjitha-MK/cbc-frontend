@@ -44,19 +44,30 @@ export default function ProductOverview() {
       )}
       {status == "not-found" && <ProductNotFound />}
       {status == "found" && (
-        <div className="flex items-center justify-center w-full h-full">
-          <div className="w-[35%] h-full">
-            <ImageSlider images={product.images}/>
+        <div className="flex flex-col items-center justify-center w-full h-full md:flex-row lg:flex-row ">
+          <h1 className="text-3xl font-bold text-gray-800 lg:hidden md:hidden">{product.productName}</h1>
+          <p className="text-xl text-gray-600 lg:hidden">
+              {product.price > product.lastPrice && (
+                <span className="text-red-600 line-through">
+                  LKR.{product.price}
+                </span>
+              )}
+              <span>{"LKR" + product.lastPrice}</span>
+            </p>
+          <div className="w-[100%] lg:h-full lg:w-[35%] border-[3px] bg-red-700">
+            {/* <ImageSlider images={product.images}/> */}
+            <h1>askas jskdjld</h1>
+            <h1>sdjisdjisjd</h1>
           </div>
 
-          <div className="w-[65%] h-full p-4">
-            <h1 className="text-3xl font-bold text-gray-800">
+          <div className="h-full p-4 lg:w-[65%]">
+            <h1 className="hidden text-3xl font-bold text-gray-800 lg:block md:block">
               {product.productName}
             </h1>
             <h1 className="text-3xl font-bold text-gray-500">
               {product.altNames.join(" ")}
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="hidden text-xl text-gray-600 lg:block">
               {product.price > product.lastPrice && (
                 <span className="text-red-600 line-through">
                   LKR.{product.price}

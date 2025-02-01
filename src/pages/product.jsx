@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -25,12 +26,12 @@ export default function ProductPage() {
   }, [loadingStatus]);
 
   return (
-    <>
-      <div className="flex flex-wrap justify-center w-full h-full overflow-y-scroll bg-red-500">
+    <div className="relative w-full h-full pt-4">
+      <div className="relative flex flex-wrap justify-center w-full h-full pt-4 overflow-y-scroll">
         {products.map((product) => (
           <Productcard product={product} />
         ))}
       </div>
-    </>
+    </div>
   );
 }

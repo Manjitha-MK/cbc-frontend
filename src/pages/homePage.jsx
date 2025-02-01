@@ -7,7 +7,7 @@ import ProductPage from "./product";
 import LoginPage from "./loginPage";
 import Cart from "./cart";
 import Home from "./home";
-import Footerpage from "./footerPage";
+// import Footerpage from "./footerPage";
 
 
 const HomePage = () => {
@@ -15,7 +15,7 @@ const HomePage = () => {
     <div className="w-full h-screen">
       <Header />
       <div className="w-full h-[calc(100vh-100px)]">
-        <Routes>
+        <Routes path="/*">
           <Route path="/" element={<Home/>} />
           <Route path="/products" element={<ProductPage/>}/>
           <Route path="/login" elemen={<LoginPage/>} />
@@ -23,7 +23,7 @@ const HomePage = () => {
           <Route path="/productInfo/:id" element={<ProductOverview/>} />
         </Routes>
       </div>
-      <Footerpage/>
+      {/* <Footerpage/> */}
     </div>
   );
 };

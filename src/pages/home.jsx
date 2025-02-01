@@ -4,7 +4,7 @@ import myimage2 from "../assets/images/homepage3.jpg"
 
 export default function Home() {
   return (
-    <div className="flex flex-wrap w-full px-4 mx-auto lg:px-14 max-w-screen-2xl">
+    <div className="flex flex-wrap w-full px-4 mx-auto h-[calc(100vh-100px)] lg:px-14 max-w-screen-2xl">
        <Carousel className=" relative h-[400px] w-full gap-y-[10px] top-3">
         <div>
           <img src={myimage} className="object-cover w-full h-full" alt="Slide 1" />
