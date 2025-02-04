@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { loadCart } from "../Utils/cartFunction";
 import CartCard from "../components/cartCard";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [labeledTotal, setLabeledTotal] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // const cartData = loadCart();
@@ -20,35 +22,21 @@ export default function Cart() {
       .then((res) => {
         // setTotal(res.data)
         console.log(res.data);
-        setTotal(res.data.total);
-        setLabeledTotal(res.data.labeledTotal);
+        if(res.data.total != null){
+          setTotal(res.data.total);
+          setLabeledTotal(res.data.labeledTotal);
+        }
+
       });
   }, []);
 
   function onOrderCheckoutClick() {
-    const token = localStorage.getItem("token");
-    if (token == null) {
-      return;
-    }
+    navigate("/shipping",{
+      state : {
+        items : loadCart()
+      }
+    })
 
-    axios
-      .post(
-        import.meta.env.VITE_BACKEND_URL + "/api/orders",
-        {
-          orderedItems: cart,
-          name: "Manjitha",
-          address: "Matale",
-          phone: "0771234332",
-        },
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res.data);
-      });
   }
 
   return (
@@ -81,7 +69,7 @@ export default function Cart() {
         Discount: LKR. {(labeledTotal - total).toFixed(2)}
       </h1>
       <h1 className="text-3xl font-bold text-accent">
-        Grand Total: LKR. {total}
+        Grand Total: LKR. {total.toFixed(2)}
       </h1>
 
       <button

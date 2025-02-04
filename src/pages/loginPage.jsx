@@ -1,14 +1,39 @@
+import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("your email");
+  const [email, setEmail] = useState();
   const [password, setPassword] = useState("");
+
+  const googleLogin = useGoogleLogin({
+    onSuccess: (res) => {
+      console.log(res);
+      axios
+        .post(import.meta.env.VITE_BACKEND_URL + "/api/users/google", {
+          token: res.access_token,
+        })
+        .then((res) => {
+          if (res.data.message == "user created") {
+            toast.success(
+              "Your Account is created now you can login via google"
+            );
+          } else {
+            localStorage.setItem("token", res.data.token);
+            if (res.data.user.type == "admin") {
+              window.location.href = "/admin";
+            } else {
+              window.location.href = "/";
+            }
+          }
+        });
+    },
+  });
 
   function login() {
     axios
-      .post(import.meta.env.VITE_BACKEND_URL+"/api/users/login", {
+      .post(import.meta.env.VITE_BACKEND_URL + "/api/users/login", {
         email: email,
         password: password,
       })
@@ -86,12 +111,14 @@ const LoginPage = () => {
           </p>
         </div>
         <button
-            type="button"
-            className="w-full px-4 py-2 font-semibold text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
-            onClick={login}
-          >
-            Login with google
-          </button>
+          type="button"
+          className="w-full px-4 py-2 font-semibold text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+          onClick={() => {
+            googleLogin();
+          }}
+        >
+          Login with google
+        </button>
       </div>
     </div>
   );

@@ -1,5 +1,7 @@
 export function loadCart() {
   const cart = localStorage.getItem("cart");
+  console.log(localStorage.getItem("cart"));
+
   if (cart != null) {
     return JSON.parse(cart);
   } else {
@@ -7,8 +9,7 @@ export function loadCart() {
   }
 }
 
-export function addToCart(productId, qty=1) {
-
+export function addToCart(productId, qty = 1) {
   if (!Number.isFinite(qty)) {
     console.error("Invalid quantity:", qty);
     return;
@@ -44,13 +45,14 @@ export function clearCart() {
   localStorage.removeItem("cart");
 }
 
-export function deleteItem(productId){
-  const cart = loadCart()
+export function deleteItem(productId) {
+  const cart = loadCart();
   const index = cart.findIndex((item) => {
     return item.productId == productId;
   });
 
-  if(index!=-1){
-    cart.splice(index,1)
+  if (index != -1) {
+    cart.splice(index, 1);
+    saveCart(cart);
   }
 }
