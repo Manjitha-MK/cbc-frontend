@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ProductNotFound from "./productNotFound";
-import ImageSlider from "../components/imageSlider";
+// import ImageSlider from "../components/imageSlider";
 import { addToCart } from "../Utils/cartFunction";
 import toast from "react-hot-toast";
 

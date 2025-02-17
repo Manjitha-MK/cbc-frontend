@@ -7,7 +7,7 @@ export default function NavSlider(props) {
     const closeSlider = props.closeSlider;
   return (
     <div className="fixed w-full h-screen bg-[#00000080] z-[10] border-[3px] border-red-900 lg:hidden">
-      <div className="bg-white flex flex-col  w-[400px] h-screen">
+      <div className="bg-white flex flex-col  w-[300px] h-screen">
         <div className="bg-white w-full h-[100px] relative flex justify-center items-center">
           <img
             src="/logo.png"

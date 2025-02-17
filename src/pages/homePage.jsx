@@ -8,6 +8,7 @@ import LoginPage from "./loginPage";
 import Cart from "./cart";
 import Home from "./home";
 import ShippingPage from "./shipping";
+import MyOrdersPage from "./orders";
 
 // import Footerpage from "./footerPage";
 
@@ -24,6 +25,7 @@ const HomePage = () => {
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/productInfo/:id" element={<ProductOverview/>} />
           <Route path="/shipping" element={<ShippingPage/>} />
+          <Route path="/orders" element={<MyOrdersPage/>} />
         </Routes>
       </div>
       {/* <Footerpage/> */}

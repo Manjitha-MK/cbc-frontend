@@ -3,6 +3,7 @@ import Dashboard from "../Admin/dashboard";
 import Products from "../Admin/products";
 import AddProductForm from "../Admin/adminProductForm";
 import EditProductForm from "../Admin/EditFormPage";
+import AdminOrderPage from "../Admin/adminOrderPage";
 
 export default function AdminHomePage() {
   return (
@@ -16,10 +17,11 @@ export default function AdminHomePage() {
         
         <Routes>
             <Route path="/dashboard" element={<Dashboard/>}/>
-            <Route path="/orders" element={<h1>Orders</h1>}/>
+            <Route path="/orders" element={<AdminOrderPage/>}/>
             <Route path="/products" element={<Products/>}/>
             <Route path="/products/addProducts" element={<AddProductForm/>}></Route>
             <Route path="/products/editProducts" element={<EditProductForm/>}></Route>
+            
         </Routes>
 
       </div>
