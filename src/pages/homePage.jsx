@@ -17,7 +17,7 @@ const HomePage = () => {
   return (
     <div className="w-full h-screen">
       <Header />
-      <div className="w-full h-[calc(100vh-100px)]">
+      <div className="w-full h-[calc(100vh-100px)] overflow-y-scroll">
         <Routes path="/*">
           <Route path="/" element={<Home/>} />
           <Route path="/products" element={<ProductPage/>}/>

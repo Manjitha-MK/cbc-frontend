@@ -29,62 +29,135 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-[#fff] ">
-      <div className="items-center justify-center w-full h-full px-2 mx-auto overflow-hidden max-w-screen-2xl bg-re">
-        <div className="pt-6 m-4 text-4xl text-center lg:hidden text-accent">
+    <div className="bg-[#d5e3f1] w-full min-h-screen">
+      <div className="relative min-h-[80vh] md:min-h-[60vh] lg:min-h-[70vh] py-4 px-4 mx-auto max-w-screen-2xl bg-red-70">
+        <div className="pt-1 pb-3 bg-seconday m-1 text-4xl text-center lg:hidden text-[#be843d]">
           <h1>
-            MK Company <br /> Pvt Lmt
+            MK COMPANY <br /> pvt lmt
           </h1>
         </div>
-        <Carousel className="w-full -top-7 h-[400px] lg:px-6 lg:h-[600px] lg:mt-10 ">
-          <div>
-            <img
-              src={myimage}
-              className="object-cover w-full lg:h-[700px]"
-              alt="Slide 1"
-            />
+        <Carousel className="w-full bg-blue-70 h-auto min-h-[50vh] md:min-h-[40vh] mx-auto">
+          <div className="relative flex flex-col items-center justify-between gap-12 py-10 bg-green-60 lg:h-full lg:p-0 lg:my-8 md:flex-row-reverse lg:flex-row-reverse">
+            <div className="w-full h-full lg:w-1/2 md:w-1/2">
+              <img
+                src={myimage}
+                className="object-cover w-full h-full "
+                alt="Slide 1"
+              />
+            </div>
+            <div className="p-1 m-3 text-center bg-red-80 lg:left-1/4 lg:absolute lg:-translate-x-1/2 bg-secondar">
+              <h1 className="mb-4 text-4xl font-semibold leading-snug text-secondary lg:w-3/4 md:w-3/4">
+                CARE FOR YOUR SKIN,
+                <br />
+                CARE FOR{" "}
+                <span className="leading-snug text-accent">YOUR BEAUTY</span>
+              </h1>
+
+              <p className="mb-8 text-base lg:w-3/4 md:w-3/4">
+                Our skin care clinic best dermatologists in
+                <br /> Colombo and Kandy offer premium aesthetics.
+              </p>
+            </div>
           </div>
-          <div>
-            <img
-              src={myimage2}
-              className="object-cover w-full lg:h-[700px]"
-              alt="Slide 2"
-            />
+          <div className="relative flex flex-col items-center justify-between gap-12 py-10 bg-green-60 lg:h-full lg:p-0 lg:my-8 md:flex-row-reverse lg:flex-row-reverse">
+            <div className="w-full h-full lg:w-1/2 md:w-1/2">
+              <img
+                src={myimage2}
+                className="object-cover w-full h-full "
+                alt="Slide 2"
+              />
+            </div>
+            <div className="p-1 m-3 text-center bg-red-80 lg:left-1/4 lg:absolute lg:-translate-x-1/2 bg-secondar">
+              <h1 className="mb-4 text-4xl font-semibold leading-snug text-secondary lg:w-3/4 md:w-3/4">
+                CARE FOR YOUR SKIN,
+                <br />
+                CARE FOR{" "}
+                <span className="leading-snug text-accent">YOUR BEAUTY</span>
+              </h1>
+
+              <p className="mb-8 text-base lg:w-3/4 md:w-3/4">
+                Our skin care clinic best dermatologists in
+                <br /> Colombo and Kandy offer premium aesthetics.
+              </p>
+            </div>
           </div>
-          <div>
-            <img
-              src={myimage3}
-              className="object-cover w-full lg:h-[700px]"
-              alt="Slide 3"
-            />
+          <div className="relative flex flex-col items-center justify-between gap-12 py-10 bg-green-60 lg:h-full lg:p-0 lg:my-8 md:flex-row-reverse lg:flex-row-reverse">
+            <div className="w-full h-full lg:w-1/2 md:w-1/2">
+              <img
+                src={myimage3}
+                className="object-cover w-full h-full "
+                alt="Slide 3"
+              />
+            </div>
+            <div className="p-1 m-3 text-center bg-red-80 lg:left-1/4 lg:absolute lg:-translate-x-1/2 bg-secondar">
+              <h1 className="mb-4 text-4xl font-semibold leading-snug text-secondary lg:w-3/4 md:w-3/4">
+                CARE FOR YOUR SKIN,
+                <br />
+                CARE FOR{" "}
+                <span className="leading-snug text-accent">YOUR BEAUTY</span>
+              </h1>
+
+              <p className="mb-8 text-base lg:w-3/4 md:w-3/4">
+                Our skin care clinic best dermatologists in
+                <br /> Colombo and Kandy offer premium aesthetics.
+              </p>
+            </div>
           </div>
+          {/* <div className="relative  flex flex-col items-center bg-blue-60 lg:h-full justify-between gap-12 lg:p-0 py-1 lg:top-[200px] md:top-[200px] top-[300px] lg:my-8 md:flex-row-reverse lg:flex-row-reverse">
+            <div className="w-full h-full lg:w-1/2 md:w-1/2">
+              <img
+                src={myimage2}
+                className="object-cover w-full h-full "
+                alt="Slide 2"
+              />
+            </div>
+            <div className="p-1 m-3 text-center left-[130px] lg:absolute bg-seconda">
+              <h1 className="mb-4 text-4xl font-semibold leading-snug text-secondary lg:w-3/4 md:w-3/4">
+                CARE FOR YOUR SKIN,
+                <br />
+                CARE FOR{" "}
+                <span className="leading-snug text-accent">YOUR BEAUTY</span>
+              </h1>
+
+              <p className="mb-8 text-base lg:w-3/4 md:w-3/4">
+                Our skin care clinic best dermatologists in
+                <br /> Colombo and Kandy offer premium aesthetics.
+              </p>
+            </div>
+          </div>
+          <div className="relative  flex flex-col items-center  md:top-[250px] bg-blue-60 lg:h-full justify-between gap-12 lg:p-0 py-1 lg:top-[200px] top-[300px] lg:my-8 md:flex-row-reverse lg:flex-row-reverse">
+            <div className="w-full h-full lg:w-1/2 md:w-1/2">
+              <img
+                src={myimage3}
+                className="object-cover w-full h-full "
+                alt="Slide 3"
+              />
+            </div>
+            <div className="p-1 m-3 text-center left-[130px] lg:absolute bg-seconda">
+              <h1 className="mb-4 text-4xl font-semibold leading-snug text-secondary lg:w-3/4 md:w-3/4">
+                CARE FOR YOUR SKIN,
+                <br />
+                CARE FOR{" "}
+                <span className="leading-snug text-accent">YOUR BEAUTY</span>
+              </h1>
+
+              <p className="mb-8 text-base lg:w-3/4 md:w-3/4">
+                Our skin care clinic best dermatologists in
+                <br /> Colombo and Kandy offer premium aesthetics.
+              </p>
+            </div>
+          </div> */}
         </Carousel>
       </div>
 
-      <div className="flex flex-col relative w-full bottom-4 h-[35vh] lg:mb-1 items-center justify-center lg:flex-row lg:gap-y-[150px] gap-x-[200px]">
-        <div className="">
-          <h1 className="font-sans text-4xl italic leading-[50px] tracking-normal text-center text-[#c4b39f] whitespace-pre-wrap">
-            CARE FOR YOUR SKIN,
-            <br />
-            CARE FOR YOUR BEAUTY
-          </h1>
-        </div>
-        <div className="">
-          <h2 className="text-center font-sans text-2xl italic leading-[50px] tracking-normal text-[#c4b39f] whitespace-pre-wrap">
-            Our skin care clinic best dermatologists in
-            <br /> Lahore and Islamabad offer premium aesthetics.
-          </h2>
-        </div>
-      </div>
-
-      <div className="flex flex-wrap w-full gap-0 py-[30px] px-4 mx-auto bg-accent-light lg:px-7 max-w-screen-2xl">
+      <div className="flex flex-wrap w-full gap-4 px-4 py-8 mx-auto bg-accent-light lg:px-7 max-w-screen-2xl">
         <div className="pb-3 mx-auto text-center md:w-1/2">
           <h1 className="text-4xl mb-4 font-semibold text-[#4D4D4D]">
             OUR LATEST PRODUCTS
           </h1>
         </div>
         {loadingStatus == "loaded" && (
-          <div className="grid w-full  border-[2px] border-black h-[500px] grid-cols-1 lg:grid-cols-3 rounded-2xl overflow-y-scroll">
+          <div className="grid w-full bg-red-800 border-[2px] border-black min-h-[500px] h-auto grid-cols-1 lg:grid-cols-3 md:grid-cols-2 place-items-center rounded-xl">
             {products.map((product) => {
               return <Productcard product={product} />;
             })}
