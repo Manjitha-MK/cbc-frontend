@@ -9,26 +9,34 @@ import Cart from "./cart";
 import Home from "./home";
 import ShippingPage from "./shipping";
 import MyOrdersPage from "./orders";
-
-// import Footerpage from "./footerPage";
-
+import Contact from "./contactPage";
+import Footerpage from "./footerPage";
+import About from "./about";
 
 const HomePage = () => {
   return (
-    <div className="w-full h-screen">
+    <div className="flex flex-col w-full min-h-screen bg-orange-100">
+      {/* Fixed Header */}
       <Header />
-      <div className="w-full h-[calc(100vh-100px)] overflow-y-scroll">
-        <Routes path="/*">
-          <Route path="/" element={<Home/>} />
-          <Route path="/products" element={<ProductPage/>}/>
-          <Route path="/login" elemen={<LoginPage/>} />
-          <Route path="/cart" element={<Cart/>}/>
-          <Route path="/productInfo/:id" element={<ProductOverview/>} />
-          <Route path="/shipping" element={<ShippingPage/>} />
-          <Route path="/orders" element={<MyOrdersPage/>} />
+
+      {/* Main Content Area */}
+      <main className="flex-1 px-0 py-0 overflow-y-auto">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<ProductPage />} />
+          <Route path="/about" element={<About/>} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/productInfo/:id" element={<ProductOverview />} />
+          <Route path="/shipping" element={<ShippingPage />} />
+          <Route path="/orders" element={<MyOrdersPage />} />
+          <Route path="/contact" element={<Contact />} />
+
         </Routes>
-      </div>
-      {/* <Footerpage/> */}
+      </main>
+
+      {/* Footer */}
+      <Footerpage />
     </div>
   );
 };

@@ -1,19 +1,77 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { FaFacebook,FaInstagramSquare } from "react-icons/fa";
+import { FaFacebook, FaInstagramSquare } from "react-icons/fa";
 import { FaTwitter, FaX, FaYoutube } from "react-icons/fa6";
+
 
 const Contact = () => {
   return (
-    <div className="flex flex-col min-h-screen lg:mt-10 sm:mt-16 bg-rose-50 ">
-      {/* Contact Content */}
-      <div className="flex-grow ">
-        <div className="flex flex-col items-start justify-between p-8 space-x-32 lg:flex-row lg:p-16">
+    <div className="min-h-screen px-4 py-8 sm:px-6 lg:px-16">
+      <div className="mx-auto mb-10 max-w-7xl">
+        <div className="flex flex-col-reverse gap-10 lg:flex-row">
+          {/* Info Section */}
+          <div className="w-full p-6 bg-gray-100 rounded-lg lg:w-1/3">
+            <div className="mb-8">
+              <h2 className="mb-4 text-lg font-bold">OUR ADDRESS</h2>
+              <p className="text-sm text-gray-700">
+                Not Your Mother’s Haircare
+                <br /> c/o DeMert Brands
+                <br /> P.O. Box 82586
+                <br /> Tampa, FL 33682
+              </p>
+            </div>
+
+            <div className="mb-8">
+              <h2 className="mb-4 text-lg font-bold">OUR SOCIAL</h2>
+              <div className="flex space-x-4 text-2xl">
+                <a href="#" className="text-blue-500 hover:text-blue-700">
+                  <FaFacebook />
+                </a>
+                <a href="#" className="text-pink-600 hover:text-pink-800">
+                  <FaInstagramSquare />
+                </a>
+                <a href="#" className="text-red-600 hover:text-red-800">
+                  <FaYoutube />
+                </a>
+                <a href="#" className="text-black hover:text-gray-800">
+                  <FaX />
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="mb-4 text-lg font-bold">EMAIL US</h2>
+              <p className="text-sm text-gray-700">
+                For Product Questions/Concerns, Brand Information & General Inquiries:
+                <br />
+                <a
+                  href="mailto:hello@nymbrands.com"
+                  className="text-black underline"
+                >
+                  hello@nymbrands.com
+                </a>
+              </p>
+              <p className="mt-4 text-sm text-gray-700">
+                Visit our corporate website: DeMert Brands:
+                <br />
+                <a
+                  href="https://www.demertbrands.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-black underline"
+                >
+                  www.demertbrands.com
+                </a>
+              </p>
+            </div>
+          </div>
+
           {/* Form Section */}
-          <div className="w-full mb-8 lg:w-2/3 lg:mb-0">
-            <h1 className="mb-6 text-3xl font-bold">CONTACT US</h1>
-            <h2 className="mb-4 text-lg">SEND US A MESSAGE</h2>
+          <div className="w-full p-6 bg-white rounded-lg shadow-md lg:w-2/3">
+            <h1 className="mb-4 text-3xl font-bold">CONTACT US</h1>
+            <h2 className="mb-2 text-lg">SEND US A MESSAGE</h2>
             <p className="mb-6 text-sm text-gray-600">*Denotes Mandatory Fields</p>
+
             <form className="space-y-4">
               <div>
                 <label className="block mb-2 text-sm font-medium">Name*</label>
@@ -49,60 +107,9 @@ const Contact = () => {
               </button>
             </form>
           </div>
-
-          {/* Info Section */}
-          <div className="w-full lg:w-1/3 ">
-            <div className="mb-8">
-              <h2 className="mb-4 text-lg font-bold">OUR ADDRESS</h2>
-              <p className="text-sm text-gray-700">
-                Not Your Mother’s Haircare
-                <br /> c/o DeMert Brands
-                <br /> P.O. Box 82586
-                <br /> Tampa, FL 33682
-              </p>
-            </div>
-
-            <div className="mb-8">
-              <h2 className="mb-4 text-lg font-bold">OUR SOCIAL</h2>
-              <div className="flex space-x-4 text-2xl">
-                <a href="#" className="text-blue-500 hover:text-blue-700">
-                  <i className="fab fa-facebook-f"><FaFacebook /></i>
-                </a>
-                <a href="#" className="text-gray-600 hover:text-black">
-                  <i className="fab fa-instagram"><FaInstagramSquare /></i>
-                </a>
-                <a href="#" className="text-red-500 hover:text-red-600">
-                  <i className="fab fa-youtube"><FaYoutube/></i>
-                </a>
-                <a href="#" className="text-gray-800 hover:text-black">
-                  <i className="fab fa-twitter"><FaX/></i>
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="mb-4 text-lg font-bold">EMAIL US</h2>
-              <p className="text-sm text-gray-700">
-                For Product Questions/Concerns, Brand Information & General Inquiries:
-                <br />
-                <a href="mailto:hello@nymbrands.com" className="text-black underline">
-                  hello@nymbrands.com
-                </a>
-              </p>
-              <p className="mt-4 text-sm text-gray-700">
-                Visit our corporate website: DeMert Brands:
-                <br />
-                <a href="https://www.demertbrands.com" target="_blank" rel="noopener noreferrer" className="text-black underline">
-                  www.demertbrands.com
-                </a>
-              </p>
-            </div>
-          </div>
         </div>
       </div>
-
-      {/* Footer Section */}
-      
+    
     </div>
   );
 };

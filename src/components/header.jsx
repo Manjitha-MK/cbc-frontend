@@ -2,79 +2,103 @@ import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
 import NavSlider from "./navslider";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [isSliderOpen, setIsSliderOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    navigate("/");
+  };
 
   return (
     <>
-      {isSliderOpen && (
-        <NavSlider
-          closeSlider={() => {
-            setIsSliderOpen(false);
-          }}
-        />
-      )}
-      <header className="bg-white border-[1px] relative flex border-black w-full h-[70px] justify-center items-center">
-        <img
-          src="/logo.png"
-          className="h-[90%] rounded-full cursor-pointer absolute left-[10px]"
-        />
-        <div className=" absolute text-[#be843d] hidden lg:block font-semibold justify-between text-center top-2 left-[80px]">
-          <h1 className="text-[10px]">MK COMPANY <br/> pvt lmt</h1>
-        </div>
-        <RxHamburgerMenu
-          onClick={() => {
-            setIsSliderOpen(true);
-          }}
-          className="text-3xl absolute right-[10px] lg:hidden cursor-pointer text-[#be843d]"
-        />
+      {isSliderOpen && <NavSlider closeSlider={() => setIsSliderOpen(false)} />}
 
-        <div className="items-center w-[500px] justify-between hidden h-full lg:flex ">
-          <Link
-            to="/"
-            className="text-xl text-[#be843d] font-bold hover:border-b border-b-[#926228]"
-          >
-            {" "}
-            Home{" "}
+      <header className="relative flex items-center justify-between w-full h-16 px-4 bg-white border border-black md:px-8 lg:px-16">
+        {/* Left: Logo + Title */}
+        <div className="flex items-center gap-3">
+          <img
+            src="/logo.png"
+            alt="Logo"
+            className="w-12 h-12 rounded-full cursor-pointer"
+          />
+          {/* Show company name on md and up */}
+          <div className="hidden md:flex flex-col text-[#be843d] font-semibold text-xs leading-tight select-none">
+            <span>MK COMPANY</span>
+            <span>pvt lmt</span>
+          </div>
+        </div>
+
+        {/* Center: Navigation Links (lg and up) */}
+        <nav className="hidden lg:flex gap-8 text-[#be843d] font-bold text-lg">
+          <Link to="/" className="hover:border-b border-b-[#926228] transition">
+            Home
           </Link>
           <Link
             to="/products"
-            className="text-xl text-[#be843d] font-bold hover:border-b border-b-[#926228]"
+            className="hover:border-b border-b-[#926228] transition"
           >
-            {" "}
-            Products{" "}
+            Products
           </Link>
           <Link
             to="/about"
-            className="text-xl text-[#be843d] font-bold hover:border-b border-b-[#926228]"
+            className="hover:border-b border-b-[#926228] transition"
           >
-            {" "}
-            About Us{" "}
+            About Us
           </Link>
           <Link
             to="/contact"
-            className="text-xl text-[#be843d] font-bold hover:border-b border-b-[#926228]"
+            className="hover:border-b border-b-[#926228] transition"
           >
-            {" "}
-            Contact Us{" "}
+            Contact Us
           </Link>
-          <Link
-            to="/cart"
-            className="text-xl text-[#be843d] font-bold hover:border-b border-b-[#926228]"
+          <button
+            onClick={() => {
+              const token = localStorage.getItem("token");
+              if (!token) {
+                toast.error("You must be logged in to access the cart.");
+              } else {
+                navigate("/cart");
+              }
+            }}
+            className="hover:border-b border-b-[#926228] transition text-left"
           >
-            {" "}
-            Cart{" "}
-          </Link>
-        </div>
-        <div className="absolute items-center justify-center hidden h-full p-2 gap-x-6 right-[15px] lg:flex">
-          <Link to="/login">
+            Cart
+          </button>
+        </nav>
+
+        {/* Right: Login Button (md and up) & Hamburger Menu (sm and md) */}
+        <div className="flex items-center gap-4">
+          {/* Login button: visible md and above */}
+          <Link to="/login" className="hidden md:inline">
             <button
-              className="px-6 py-1 font-semibold transition-all duration-300 border border-orange-400 rounded-lg shadow-md bg-primary text-accent backdrop-blur-lg hover:bg-orange-500/30"
+              className="px-5 py-1 font-semibold transition border border-orange-400 rounded-lg shadow-md bg-primary text-accent backdrop-blur-lg hover:bg-orange-500/30"
+              type="button"
             >
               Login
             </button>
           </Link>
+
+          {/* Hamburger: visible only sm and md */}
+          <button
+            onClick={() => setIsSliderOpen(true)}
+            className="lg:hidden text-[#be843d] text-3xl focus:outline-none"
+            aria-label="Open menu"
+          >
+            <RxHamburgerMenu />
+          </button>
+          <button
+            className="px-5 py-1 font-semibold transition border border-orange-400 rounded-lg shadow-md bg-primary text-accent backdrop-blur-lg hover:bg-orange-500/30"
+            type="button"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         </div>
       </header>
     </>

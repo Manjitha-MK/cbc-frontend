@@ -1,5 +1,4 @@
 import { useLocation, useNavigate } from "react-router-dom";
-// import CartCard from "../../components/cartCard";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -78,7 +77,7 @@ export default function ShippingPage() {
           },
         }
       )
-      .then((res) => {
+      .then(() => {
         toast.success("Order placed successfully!");
         navigate("/orders");
       })
@@ -88,78 +87,85 @@ export default function ShippingPage() {
       });
   }
 
-  if (!cart) {
-    return null;
-  }
+  if (!cart) return null;
 
   return (
-    <div className="w-full h-full p-4 bg-gray-100">
-      <div className="w-full max-w-4xl p-6 mx-auto bg-white rounded-lg shadow-md">
-        <h1 className="mb-4 text-2xl font-bold">Shipping Details</h1>
-        <div className="mb-4">
-          <label className="block mb-1 font-medium text-gray-700">Name</label>
-          <input
-            type="text"
-            className="w-full p-2 border border-gray-300 rounded-md"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Enter your name"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block mb-1 font-medium text-gray-700">Address</label>
-          <textarea
-            className="w-full p-2 border border-gray-300 rounded-md"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            placeholder="Enter your address"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block mb-1 font-medium text-gray-700">Phone</label>
-          <input
-            type="text"
-            className="w-full p-2 border border-gray-300 rounded-md"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            placeholder="Enter your phone number"
-          />
+    <div className="min-h-screen px-4 py-6 bg-gray-100 sm:px-6 lg:px-8">
+      <div className="max-w-4xl p-4 mx-auto bg-white rounded-lg shadow-md sm:p-6">
+        <h1 className="mb-6 text-xl font-bold sm:text-2xl">Shipping Details</h1>
+
+        {/* Form */}
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="col-span-2">
+            <label className="block text-sm font-medium text-gray-700">Name</label>
+            <input
+              type="text"
+              className="w-full p-2 mt-1 border border-gray-300 rounded-md"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter your name"
+            />
+          </div>
+          <div className="col-span-2">
+            <label className="block text-sm font-medium text-gray-700">Address</label>
+            <textarea
+              className="w-full p-2 mt-1 border border-gray-300 rounded-md"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder="Enter your address"
+              rows="3"
+            />
+          </div>
+          <div className="col-span-2 sm:col-span-1">
+            <label className="block text-sm font-medium text-gray-700">Phone</label>
+            <input
+              type="text"
+              className="w-full p-2 mt-1 border border-gray-300 rounded-md"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="Enter your phone number"
+            />
+          </div>
         </div>
 
-        <h2 className="mt-6 mb-4 text-xl font-bold">Order Summary</h2>
-        <table className="w-full mb-4 border border-collapse border-gray-300">
-          <thead>
-            <tr className="bg-gray-200">
-              <th className="p-2 border border-gray-300">Image</th>
-              <th className="p-2 border border-gray-300">Product Name</th>
-              <th className="p-2 border border-gray-300">Product ID</th>
-              <th className="p-2 border border-gray-300">Qty</th>
-              <th className="p-2 border border-gray-300">Price</th>
-              <th className="p-2 border border-gray-300">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cart.map((item) => (
-              <CartCard
-                key={item.productId}
-                productId={item.productId}
-                qty={item.qty}
-              />
-            ))}
-          </tbody>
-        </table>
-        <h1 className="mb-2 text-lg font-bold text-gray-700">
-          Total: LKR. {labeledTotal.toFixed(2)}
-        </h1>
-        <h1 className="mb-2 text-lg font-bold text-gray-700">
-          Discount: LKR. {(labeledTotal - total).toFixed(2)}
-        </h1>
-        <h1 className="mb-4 text-lg font-bold text-gray-700">
-          Grand Total: LKR. {total.toFixed(2)}
-        </h1>
+        {/* Order Summary */}
+        <h2 className="mt-8 mb-4 text-lg font-semibold sm:text-xl">Order Summary</h2>
+
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-sm border border-gray-300 rounded-md">
+            <thead className="text-gray-700 bg-gray-200">
+              <tr>
+                <th className="p-2 border">Image</th>
+                <th className="p-2 border">Name</th>
+                <th className="p-2 border">ID</th>
+                <th className="p-2 border">Qty</th>
+                <th className="p-2 border">Price</th>
+                <th className="p-2 border">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cart.map((item) => (
+                <CartCard
+                  key={item.productId}
+                  productId={item.productId}
+                  qty={item.qty}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Totals */}
+        <div className="mt-6 space-y-1 text-right text-gray-700">
+          <p className="font-medium">Total: LKR. {labeledTotal.toFixed(2)}</p>
+          <p className="font-medium">Discount: LKR. {(labeledTotal - total).toFixed(2)}</p>
+          <p className="text-lg font-bold">Grand Total: LKR. {total.toFixed(2)}</p>
+        </div>
+
+        {/* Button */}
         <button
-          className="w-full px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-500"
           onClick={createOrder}
+          className="w-full py-3 mt-6 text-white transition duration-300 bg-blue-600 rounded-lg hover:bg-blue-500"
         >
           Checkout
         </button>

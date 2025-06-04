@@ -7,6 +7,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Productcard from "../components/productCard";
 
+import banner from "../assets/images/banner image.jpg";
+
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [loadingStatus, setLoadingStatus] = useState("loading");
@@ -16,7 +18,6 @@ export default function Home() {
       axios
         .get(import.meta.env.VITE_BACKEND_URL + "/api/products")
         .then((res) => {
-          console.log(res.data.products);
           setProducts(res.data.products);
           setLoadingStatus("loaded");
         })
@@ -29,143 +30,78 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-[#d5e3f1] w-full min-h-screen">
-      <div className="relative min-h-[80vh] md:min-h-[60vh] lg:min-h-[70vh] py-4 px-4 mx-auto max-w-screen-2xl bg-red-70">
-        <div className="pt-1 pb-3 bg-seconday m-1 text-4xl text-center lg:hidden text-[#be843d]">
-          <h1>
-            MK COMPANY <br /> pvt lmt
-          </h1>
+    <div className="w-full min-h-screen">
+      {/* ✅ Banner Image Section */}
+      <div className="relative h-[50vh] md:h-[60vh] lg:h-[80vh] w-full mx-auto max-w-screen-2xl">
+        <img
+          src={banner}
+          alt="Banner"
+          className="object-cover w-full h-full rounded-lg"
+        />
+        <div className="absolute inset-0 flex items-center justify-center text-4xl font-bold text-center text-orange-200 bg-black bg-opacity-30">
+          CRISTAL BEAUTY <br /> CLEAR
         </div>
-        <Carousel className="w-full bg-blue-70 h-auto min-h-[50vh] md:min-h-[40vh] mx-auto">
-          <div className="relative flex flex-col items-center justify-between gap-12 py-10 bg-green-60 lg:h-full lg:p-0 lg:my-8 md:flex-row-reverse lg:flex-row-reverse">
-            <div className="w-full h-full lg:w-1/2 md:w-1/2">
-              <img
-                src={myimage}
-                className="object-cover w-full h-full "
-                alt="Slide 1"
-              />
-            </div>
-            <div className="p-1 m-3 text-center bg-red-80 lg:left-1/4 lg:absolute lg:-translate-x-1/2 bg-secondar">
-              <h1 className="mb-4 text-4xl font-semibold leading-snug text-secondary lg:w-3/4 md:w-3/4">
-                CARE FOR YOUR SKIN,
-                <br />
-                CARE FOR{" "}
-                <span className="leading-snug text-accent">YOUR BEAUTY</span>
-              </h1>
+      </div>
 
-              <p className="mb-8 text-base lg:w-3/4 md:w-3/4">
-                Our skin care clinic best dermatologists in
-                <br /> Colombo and Kandy offer premium aesthetics.
-              </p>
-            </div>
-          </div>
-          <div className="relative flex flex-col items-center justify-between gap-12 py-10 bg-green-60 lg:h-full lg:p-0 lg:my-8 md:flex-row-reverse lg:flex-row-reverse">
-            <div className="w-full h-full lg:w-1/2 md:w-1/2">
-              <img
-                src={myimage2}
-                className="object-cover w-full h-full "
-                alt="Slide 2"
-              />
-            </div>
-            <div className="p-1 m-3 text-center bg-red-80 lg:left-1/4 lg:absolute lg:-translate-x-1/2 bg-secondar">
-              <h1 className="mb-4 text-4xl font-semibold leading-snug text-secondary lg:w-3/4 md:w-3/4">
-                CARE FOR YOUR SKIN,
-                <br />
-                CARE FOR{" "}
-                <span className="leading-snug text-accent">YOUR BEAUTY</span>
-              </h1>
+      {/* ✅ Carousel Section */}
+      <div>
+        <Carousel className="w-full h-auto min-h-[50vh] md:min-h-[40vh] mx-auto bg-pink-50">
+          {[myimage, myimage2, myimage3].map((img, index) => (
+            <div
+              key={index}
+              className="relative flex flex-col-reverse items-center justify-between gap-6 py-10 lg:flex-row-reverse lg:gap-12 lg:py-16"
+            >
+              {/* Image */}
+              <div className="w-full lg:w-1/2">
+                <img
+                  src={img}
+                  className="object-cover w-full h-full rounded-lg"
+                  alt={`Slide ${index + 1}`}
+                />
+              </div>
 
-              <p className="mb-8 text-base lg:w-3/4 md:w-3/4">
-                Our skin care clinic best dermatologists in
-                <br /> Colombo and Kandy offer premium aesthetics.
-              </p>
+              {/* Text */}
+              <div className="px-4 text-center lg:text-left lg:w-1/2">
+                <h1 className="text-3xl md:text-4xl font-bold leading-snug text-[#be843d] mb-4">
+                  CARE FOR YOUR SKIN,
+                  <br />
+                  CARE FOR <span className="text-accent">YOUR BEAUTY</span>
+                </h1>
+                <p className="text-base text-gray-700">
+                  Our skin care clinic best dermatologists in
+                  <br />
+                  Colombo and Kandy offer premium aesthetics.
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="relative flex flex-col items-center justify-between gap-12 py-10 bg-green-60 lg:h-full lg:p-0 lg:my-8 md:flex-row-reverse lg:flex-row-reverse">
-            <div className="w-full h-full lg:w-1/2 md:w-1/2">
-              <img
-                src={myimage3}
-                className="object-cover w-full h-full "
-                alt="Slide 3"
-              />
-            </div>
-            <div className="p-1 m-3 text-center bg-red-80 lg:left-1/4 lg:absolute lg:-translate-x-1/2 bg-secondar">
-              <h1 className="mb-4 text-4xl font-semibold leading-snug text-secondary lg:w-3/4 md:w-3/4">
-                CARE FOR YOUR SKIN,
-                <br />
-                CARE FOR{" "}
-                <span className="leading-snug text-accent">YOUR BEAUTY</span>
-              </h1>
-
-              <p className="mb-8 text-base lg:w-3/4 md:w-3/4">
-                Our skin care clinic best dermatologists in
-                <br /> Colombo and Kandy offer premium aesthetics.
-              </p>
-            </div>
-          </div>
-          {/* <div className="relative  flex flex-col items-center bg-blue-60 lg:h-full justify-between gap-12 lg:p-0 py-1 lg:top-[200px] md:top-[200px] top-[300px] lg:my-8 md:flex-row-reverse lg:flex-row-reverse">
-            <div className="w-full h-full lg:w-1/2 md:w-1/2">
-              <img
-                src={myimage2}
-                className="object-cover w-full h-full "
-                alt="Slide 2"
-              />
-            </div>
-            <div className="p-1 m-3 text-center left-[130px] lg:absolute bg-seconda">
-              <h1 className="mb-4 text-4xl font-semibold leading-snug text-secondary lg:w-3/4 md:w-3/4">
-                CARE FOR YOUR SKIN,
-                <br />
-                CARE FOR{" "}
-                <span className="leading-snug text-accent">YOUR BEAUTY</span>
-              </h1>
-
-              <p className="mb-8 text-base lg:w-3/4 md:w-3/4">
-                Our skin care clinic best dermatologists in
-                <br /> Colombo and Kandy offer premium aesthetics.
-              </p>
-            </div>
-          </div>
-          <div className="relative  flex flex-col items-center  md:top-[250px] bg-blue-60 lg:h-full justify-between gap-12 lg:p-0 py-1 lg:top-[200px] top-[300px] lg:my-8 md:flex-row-reverse lg:flex-row-reverse">
-            <div className="w-full h-full lg:w-1/2 md:w-1/2">
-              <img
-                src={myimage3}
-                className="object-cover w-full h-full "
-                alt="Slide 3"
-              />
-            </div>
-            <div className="p-1 m-3 text-center left-[130px] lg:absolute bg-seconda">
-              <h1 className="mb-4 text-4xl font-semibold leading-snug text-secondary lg:w-3/4 md:w-3/4">
-                CARE FOR YOUR SKIN,
-                <br />
-                CARE FOR{" "}
-                <span className="leading-snug text-accent">YOUR BEAUTY</span>
-              </h1>
-
-              <p className="mb-8 text-base lg:w-3/4 md:w-3/4">
-                Our skin care clinic best dermatologists in
-                <br /> Colombo and Kandy offer premium aesthetics.
-              </p>
-            </div>
-          </div> */}
+          ))}
         </Carousel>
       </div>
 
-      <div className="flex flex-wrap w-full gap-4 px-4 py-8 mx-auto bg-accent-light lg:px-7 max-w-screen-2xl">
-        <div className="pb-3 mx-auto text-center md:w-1/2">
-          <h1 className="text-4xl mb-4 font-semibold text-[#4D4D4D]">
+      {/* ✅ Product Section */}
+      <div className="w-full px-4 py-12 mx-auto max-w-screen-2xl">
+        <div className="mb-10 text-center">
+          <h2 className="text-3xl font-bold text-gray-800 md:text-4xl">
             OUR LATEST PRODUCTS
-          </h1>
+          </h2>
+          <p className="mt-2 text-sm text-accent md:text-base">
+            Discover our best-selling and newly added products.
+          </p>
         </div>
-        {loadingStatus == "loaded" && (
-          <div className="grid w-full bg-red-800 border-[2px] border-black min-h-[500px] h-auto grid-cols-1 lg:grid-cols-3 md:grid-cols-2 place-items-center rounded-xl">
-            {products.map((product) => {
-              return <Productcard product={product} />;
-            })}
+
+        {loadingStatus === "loaded" ? (
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+            {products.map((product) => (
+              <Productcard key={product._id} product={product} />
+            ))}
           </div>
-        )}
-        {loadingStatus == "loading" && (
-          <div className="flex items-center justify-center w-full h-full">
-            <div className="w-32 h-32 border-2 border-b-4 border-gray-500 rounded-full animate-spin border-b-accent"></div>
+        ) : loadingStatus === "loading" ? (
+          <div className="flex items-center justify-center min-h-[200px]">
+            <div className="w-14 h-14 border-4 border-t-4 border-gray-300 border-t-[#be843d] rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          <div className="font-medium text-center text-red-600">
+            Failed to load products. Please try again later.
           </div>
         )}
       </div>

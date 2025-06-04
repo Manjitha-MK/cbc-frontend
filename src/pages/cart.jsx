@@ -40,7 +40,7 @@ export default function Cart() {
   }
 
   return (
-    <div className="flex flex-col items-end w-full h-full overflow-y-scroll bg-white ">
+    <div className="flex flex-col items-end w-full h-full overflow-y-scroll ">
       <table className="w-full">
         <thead className="">
           <tr className="">
