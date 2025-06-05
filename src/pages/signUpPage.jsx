@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -55,7 +55,7 @@ const SignUpPage = () => {
 
       if (data.token) {
         localStorage.setItem('token', data.token);
-        window.location.href = '/dashboard'; // Redirect after successful signup
+        window.location.href = '/dashboard';
       } else {
         alert(data.message || "Account created, please login.");
         window.location.href = '/login';
@@ -67,13 +67,13 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-900">
-      <div className="w-full max-w-md p-8 bg-gray-800 rounded-lg shadow-lg">
-        <h2 className="mb-6 text-3xl font-bold text-center text-white">Sign Up</h2>
+    <div className="flex items-center justify-center min-h-screen bg-pink-50">
+      <div className="w-full max-w-md p-8 bg-white border border-orange-200 rounded-lg shadow-md">
+        <h2 className="mb-6 text-3xl font-bold text-center text-orange-600">Sign Up</h2>
         <form onSubmit={handleSubmit}>
           {/* First Name */}
           <div className="mb-4">
-            <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-gray-400">
+            <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-gray-700">
               First Name
             </label>
             <input
@@ -81,14 +81,14 @@ const SignUpPage = () => {
               id="firstName"
               value={formData.firstName}
               onChange={handleChange}
-              className="w-full p-3 text-white bg-gray-700 rounded"
+              className="w-full p-3 text-gray-800 bg-orange-100 rounded focus:outline-none focus:ring-2 focus:ring-orange-300"
               required
             />
           </div>
 
           {/* Last Name */}
           <div className="mb-4">
-            <label htmlFor="lastName" className="block mb-2 text-sm font-medium text-gray-400">
+            <label htmlFor="lastName" className="block mb-2 text-sm font-medium text-gray-700">
               Last Name
             </label>
             <input
@@ -96,14 +96,14 @@ const SignUpPage = () => {
               id="lastName"
               value={formData.lastName}
               onChange={handleChange}
-              className="w-full p-3 text-white bg-gray-700 rounded"
+              className="w-full p-3 text-gray-800 bg-orange-100 rounded focus:outline-none focus:ring-2 focus:ring-orange-300"
               required
             />
           </div>
 
           {/* Email */}
           <div className="mb-4">
-            <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-400">
+            <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700">
               Email Address
             </label>
             <input
@@ -111,14 +111,14 @@ const SignUpPage = () => {
               id="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full p-3 text-white bg-gray-700 rounded"
+              className="w-full p-3 text-gray-800 bg-orange-100 rounded focus:outline-none focus:ring-2 focus:ring-orange-300"
               required
             />
           </div>
 
           {/* Password */}
           <div className="mb-4">
-            <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-400">
+            <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-700">
               Password
             </label>
             <input
@@ -126,15 +126,15 @@ const SignUpPage = () => {
               id="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full p-3 text-white bg-gray-700 rounded"
+              className="w-full p-3 text-gray-800 bg-orange-100 rounded focus:outline-none focus:ring-2 focus:ring-orange-300"
               required
               placeholder="8+ chars, A-Z, a-z, 0-9, special char"
             />
           </div>
 
           {/* Confirm Password */}
-          <div className="mb-4">
-            <label htmlFor="confirmPassword" className="block mb-2 text-sm font-medium text-gray-400">
+          <div className="mb-6">
+            <label htmlFor="confirmPassword" className="block mb-2 text-sm font-medium text-gray-700">
               Confirm Password
             </label>
             <input
@@ -142,7 +142,7 @@ const SignUpPage = () => {
               id="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className="w-full p-3 text-white bg-gray-700 rounded"
+              className="w-full p-3 text-gray-800 bg-orange-100 rounded focus:outline-none focus:ring-2 focus:ring-orange-300"
               required
             />
           </div>
@@ -150,16 +150,16 @@ const SignUpPage = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full px-4 py-2 font-semibold text-white bg-blue-500 rounded hover:bg-blue-600"
+            className="w-full px-4 py-2 font-semibold text-white bg-orange-500 rounded hover:bg-orange-600"
           >
             Sign Up
           </button>
         </form>
 
         <div className="mt-6 text-center">
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-600">
             Already have an account?{' '}
-            <a href="/login" className="text-blue-400 hover:underline">
+            <a href="/login" className="text-orange-500 hover:underline">
               Log In
             </a>
           </p>
