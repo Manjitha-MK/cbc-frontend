@@ -21,6 +21,8 @@ const LoginPage = () => {
             );
           } else {
             localStorage.setItem("token", res.data.token);
+            localStorage.setItem("email", res.data.user.email);
+            
             if (res.data.user.type === "admin") {
               window.location.href = "/admin";
             } else {
@@ -43,7 +45,10 @@ const LoginPage = () => {
           return;
         }
         toast.success("Login successful");
+
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("email", res.data.user.email);
+        
         if (res.data.user.type === "admin") {
           window.location.href = "/admin";
         } else {

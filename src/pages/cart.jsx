@@ -9,6 +9,7 @@ export default function Cart() {
   const [total, setTotal] = useState(0);
   const [labeledTotal, setLabeledTotal] = useState(0);
   const navigate = useNavigate();
+  const email = localStorage.getItem("email");
 
   useEffect(() => {
     // const cartData = loadCart();
@@ -22,25 +23,30 @@ export default function Cart() {
       .then((res) => {
         // setTotal(res.data)
         console.log(res.data);
-        if(res.data.total != null){
+        if (res.data.total != null) {
           setTotal(res.data.total);
           setLabeledTotal(res.data.labeledTotal);
         }
-
       });
   }, []);
 
   function onOrderCheckoutClick() {
-    navigate("/shipping",{
-      state : {
-        items : loadCart()
-      }
-    })
-
+    navigate("/shipping", {
+      state: {
+        items: loadCart(),
+      },
+    });
   }
 
   return (
     <div className="flex flex-col items-end w-full h-full overflow-y-scroll ">
+      {/* ✅ Show email here */}
+      {email && (
+        <h2 className="self-start px-4 text-lg font-medium text-gray-700">
+          Logged in as: <span className="text-black">{email}</span>
+        </h2>
+      )}
+
       <table className="w-full">
         <thead className="">
           <tr className="">
@@ -52,16 +58,17 @@ export default function Cart() {
             <th>Total</th>
           </tr>
         </thead>
-        {cart.map((item) => {
-          return (
+        <tbody>
+          {cart.map((item) => (
             <CartCard
               key={item.productId}
               productId={item.productId}
               qty={item.qty}
             />
-          );
-        })}
+          ))}
+        </tbody>
       </table>
+
       <h1 className="text-3xl font-bold text-accent">
         Total: LKR. {labeledTotal.toFixed(2)}
       </h1>

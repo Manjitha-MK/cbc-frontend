@@ -1,12 +1,9 @@
 export function loadCart() {
-  const cart = localStorage.getItem("cart");
-  console.log(localStorage.getItem("cart"));
+    const email = localStorage.getItem("email");
+  if (!email) return [];
 
-  if (cart != null) {
-    return JSON.parse(cart);
-  } else {
-    return [];
-  }
+  const cart = localStorage.getItem(`cart_${email}`);
+  return cart ? JSON.parse(cart) : [];
 }
 
 export function addToCart(productId, qty = 1) {
@@ -38,11 +35,16 @@ export function addToCart(productId, qty = 1) {
 }
 
 export function saveCart(cart) {
-  localStorage.setItem("cart", JSON.stringify(cart));
+  const email = localStorage.getItem("email");
+  if (!email) return;
+  localStorage.setItem(`cart_${email}`, JSON.stringify(cart));
 }
 
 export function clearCart() {
-  localStorage.removeItem("cart");
+   const email = localStorage.getItem("email");
+  if (email) {
+    localStorage.removeItem(`cart_${email}`);
+  }
 }
 
 export function deleteItem(productId) {
@@ -56,3 +58,4 @@ export function deleteItem(productId) {
     saveCart(cart);
   }
 }
+
