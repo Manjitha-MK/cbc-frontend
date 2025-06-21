@@ -40,7 +40,7 @@ export function saveCart(cart) {
   localStorage.setItem(`cart_${email}`, JSON.stringify(cart));
 }
 
-export function clearCart() {
+export function deleteCart() {
    const email = localStorage.getItem("email");
   if (email) {
     localStorage.removeItem(`cart_${email}`);
@@ -55,6 +55,20 @@ export function deleteItem(productId) {
 
   if (index != -1) {
     cart.splice(index, 1);
+    saveCart(cart);
+  }
+}
+
+export function qtyChange(productId, newQty) {
+  const cart = loadCart();
+  const index = cart.findIndex((item) => item.productId === productId);
+
+  if (index !== -1) {
+    if (newQty <= 0) {
+      cart.splice(index, 1);
+    } else {
+      cart[index].qty = newQty;
+    }
     saveCart(cart);
   }
 }
