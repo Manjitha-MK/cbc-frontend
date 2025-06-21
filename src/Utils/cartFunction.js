@@ -73,3 +73,12 @@ export function qtyChange(productId, newQty) {
   }
 }
 
+export function selectProduct(productId) {
+  const cart = loadCart();
+  const index = cart.findIndex((item) => item.productId === productId);
+
+  if (index !== -1) {
+    cart[index].selected = !cart[index].selected; // Toggle selected state
+    saveCart(cart);
+  }
+}
