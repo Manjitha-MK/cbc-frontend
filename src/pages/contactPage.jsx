@@ -2,9 +2,18 @@
 import React from "react";
 import { FaFacebook, FaInstagramSquare } from "react-icons/fa";
 import { FaTwitter, FaX, FaYoutube } from "react-icons/fa6";
-
+import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+
   return (
     <div className="min-h-screen px-4 py-8 sm:px-6 lg:px-16">
       <div className="mx-auto mb-10 max-w-7xl">
@@ -42,7 +51,8 @@ const Contact = () => {
             <div>
               <h2 className="mb-4 text-lg font-bold">EMAIL US</h2>
               <p className="text-sm text-gray-700">
-                For Product Questions/Concerns, Brand Information & General Inquiries:
+                For Product Questions/Concerns, Brand Information & General
+                Inquiries:
                 <br />
                 <a
                   href="mailto:hello@nymbrands.com"
@@ -70,13 +80,18 @@ const Contact = () => {
           <div className="w-full p-6 bg-white rounded-lg shadow-md lg:w-2/3">
             <h1 className="mb-4 text-3xl font-bold">CONTACT US</h1>
             <h2 className="mb-2 text-lg">SEND US A MESSAGE</h2>
-            <p className="mb-6 text-sm text-gray-600">*Denotes Mandatory Fields</p>
+            <p className="mb-6 text-sm text-gray-600">
+              *Denotes Mandatory Fields
+            </p>
 
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div>
                 <label className="block mb-2 text-sm font-medium">Name*</label>
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                   placeholder="Enter your name"
                   required
@@ -86,14 +101,22 @@ const Contact = () => {
                 <label className="block mb-2 text-sm font-medium">Email*</label>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                   placeholder="Enter your email"
                   required
                 />
               </div>
               <div>
-                <label className="block mb-2 text-sm font-medium">Message</label>
+                <label className="block mb-2 text-sm font-medium">
+                  Message
+                </label>
                 <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                   rows="5"
                   placeholder="Type message here..."
@@ -109,7 +132,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    
     </div>
   );
 };
