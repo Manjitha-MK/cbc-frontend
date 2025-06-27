@@ -17,6 +17,17 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:5000/api/contact", formData);
+      toast.success("Message sent successfully!");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.");
+      console.error(err);
+    }
+  };
 
   return (
     <div className="min-h-screen px-4 py-8 sm:px-6 lg:px-16">
